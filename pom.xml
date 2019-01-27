@@ -137,6 +137,9 @@
 						</goals>
 					</execution>
 				</executions>
+				<configuration>
+					<minimizeJar>true</minimizeJar>
+				</configuration>
 			</plugin>
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>

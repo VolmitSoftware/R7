@@ -1,0 +1,5 @@
+name: React
+version: ${project.version}
+main: ${react.main}
+authors: [cyberpwn]
+load: STARTUP

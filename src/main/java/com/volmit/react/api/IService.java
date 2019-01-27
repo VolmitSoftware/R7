@@ -24,6 +24,18 @@ public interface IService
 	public void tick();
 
 	/**
+	 * Called when the service has failed
+	 */
+	public void fail();
+
+	/**
+	 * Called when the service is failing
+	 *
+	 * @return true if it is
+	 */
+	public boolean isFailing();
+
+	/**
 	 * Is this service ticked async
 	 *
 	 * @return true if it is

@@ -97,6 +97,7 @@ public class React extends VolumePlugin
 		for(IService i : services)
 		{
 			i.start();
+			register(i);
 		}
 	}
 

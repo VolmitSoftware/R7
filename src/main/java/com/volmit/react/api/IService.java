@@ -1,12 +1,14 @@
 package com.volmit.react.api;
 
+import org.bukkit.event.Listener;
+
 /**
  * Represents a react service
  *
  * @author cyberpwn
  *
  */
-public interface IService
+public interface IService extends Listener
 {
 	/**
 	 * Called when the service is started

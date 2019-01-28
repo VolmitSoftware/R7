@@ -7,3 +7,22 @@ website: https://www.spigotmc.org/resources/react-smart-server-performance.21057
 database: false
 softdepend: [ProtocolLib, FastAsyncWorldEdit, PlaceholderAPI]
 prefix: React
+permissions:
+  react.*:
+    description: Gives access to all React permissions
+    default: op
+    children:
+      react.use: true
+      react.reload: true
+      react.monitor: true
+  react.use:
+    description: Grants the ability to use all of react
+    default: op
+    children:
+      react.monitor: true
+  react.reload:
+    description: Grants the ability to use all of react
+    default: op
+  react.monitor:
+    description: Grants the ability to use all of react
+    default: op

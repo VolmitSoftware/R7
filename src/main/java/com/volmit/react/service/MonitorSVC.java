@@ -39,12 +39,7 @@ public class MonitorSVC extends RSVC
 		t += " " + (!m ? s.getSampler("tps") :
 			s.getSampler("tick-server") + " " + C.RESET + s.getSampler("tick-server-percent"));
 		t += " " + (!m ? s.getSampler("mem-use") + "" + C.RESET + C.DARK_GRAY + " (" + s.getSampler("mem-use-percent") + C.RESET + "" + C.DARK_GRAY + ")"  :
-			s.getSampler("tick-server") + " " + C.RESET + s.getSampler("tick-server-percent"));
-		t += " " + (!m ? s.getSampler("tps") : s.getSampler("tick-server") + " " + C.RESET + s.getSampler("tick-server-percent"));
-		t += " " + (!m ? s.getSampler("tps") : s.getSampler("tick-server") + " " + C.RESET + s.getSampler("tick-server-percent"));
-		t += " " + (!m ? s.getSampler("tps") : s.getSampler("tick-server") + " " + C.RESET + s.getSampler("tick-server-percent"));
-		t += " " + (!m ? s.getSampler("tps") : s.getSampler("tick-server") + " " + C.RESET + s.getSampler("tick-server-percent"));
-		t += " " + (!m ? s.getSampler("tps") : s.getSampler("tick-server") + " " + C.RESET + s.getSampler("tick-server-percent"));
+			s.getSampler("maht"));
 		//@done
 		return t.substring(1).trim();
 	}

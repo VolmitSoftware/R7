@@ -13,10 +13,10 @@ import org.bukkit.inventory.ItemStack;
 
 import com.volmit.react.React;
 import com.volmit.react.sched.S;
+import com.volmit.react.util.M;
 import com.volmit.volume.lang.collections.Callback;
 import com.volmit.volume.lang.collections.GMap;
 import com.volmit.volume.lang.collections.GSet;
-import com.volmit.volume.math.M;
 
 public class UIWindow implements Window, Listener
 {

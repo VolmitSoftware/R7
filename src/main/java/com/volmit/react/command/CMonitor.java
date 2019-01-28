@@ -18,7 +18,7 @@ public class CMonitor extends ReactCommand
 
 		if(Gate.canHavePlayerData(s.player()))
 		{
-			React.playerSVC.getPlayer(s.player().getUniqueId()).setMonitoring(React.playerSVC.getPlayer(s.player().getUniqueId()).isMonitoring());
+			React.playerSVC.getPlayer(s.player().getUniqueId()).setMonitoring(!React.playerSVC.getPlayer(s.player().getUniqueId()).isMonitoring());
 
 			if(React.playerSVC.getPlayer(s.player().getUniqueId()).isMonitoring())
 			{

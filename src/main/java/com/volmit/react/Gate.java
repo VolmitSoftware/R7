@@ -45,7 +45,7 @@ public class Gate
 	{
 		if(NMSVersion.R1_9_2.betweenInclusive(NMSVersion.R1_13).contains(NMSVersion.current()))
 		{
-			NMP.MESSAGE.advance(p, is, TAG + "\n" + C.GRAY + message, FrameType.GOAL);
+			NMP.MESSAGE.advance(p, is, C.GRAY + message, FrameType.GOAL);
 		}
 
 		else

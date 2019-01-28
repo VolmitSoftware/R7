@@ -31,6 +31,7 @@ public class PlayerSVC extends RSVC
 		super(true, 5, 100);
 		players = new GMap<>();
 		save = new GList<>();
+		load = new GList<>();
 	}
 
 	public Collection<ReactPlayer> getPlayers()

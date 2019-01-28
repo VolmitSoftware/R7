@@ -1,5 +1,7 @@
 package com.volmit.react.api;
 
+import com.volmit.react.React;
+
 public abstract class RSampler implements ISampler
 {
 	private volatile double value;
@@ -15,6 +17,11 @@ public abstract class RSampler implements ISampler
 		this.id = id;
 	}
 
+	@SuppressWarnings("unchecked")
+	protected <T extends ISampler> T getSampler(String id)
+	{
+		return (T) React.sampleSVC.getSampler(id);
+	}
 
 	/**
 	 * Set the shortcode

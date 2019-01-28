@@ -18,7 +18,6 @@ public class SamplerCPUTotal extends RAveragedSampler
 	public void sample()
 	{
 		setValue(Platform.CPU.getCPULoad());
-		System.out.println("TOTAL: " + get());
 	}
 
 	@Override

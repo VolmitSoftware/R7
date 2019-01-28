@@ -18,7 +18,6 @@ public class SamplerCPUProcess extends RAveragedSampler
 	public void sample()
 	{
 		setValue(Platform.CPU.getLiveProcessCPULoad());
-		System.out.println(get());
 	}
 
 	@Override

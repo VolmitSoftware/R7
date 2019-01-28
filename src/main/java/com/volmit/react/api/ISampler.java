@@ -9,6 +9,21 @@ package com.volmit.react.api;
 public interface ISampler
 {
 	/**
+	 * Hint the sampler formatter to set its accuracy to x digits
+	 *
+	 * @param accuracy
+	 *            the accuracy
+	 */
+	public void setAccuracy(int accuracy);
+
+	/**
+	 * Get this samplers digit accuracy hint
+	 *
+	 * @return the accuracy hint
+	 */
+	public int getAccuracy();
+
+	/**
 	 * Get the id of this sampler
 	 *
 	 * @return the identifier

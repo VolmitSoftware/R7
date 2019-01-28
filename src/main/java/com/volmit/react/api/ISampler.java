@@ -86,4 +86,11 @@ public interface ISampler extends Listener
 	 * @return the formatted value
 	 */
 	public String get();
+
+	/**
+	 * Get the fully formatted tag for this value
+	 *
+	 * @return the formatted tag shown in the action bar
+	 */
+	public String getTag();
 }

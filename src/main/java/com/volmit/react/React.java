@@ -6,6 +6,8 @@ import org.bukkit.event.Listener;
 
 import com.volmit.react.api.IService;
 import com.volmit.react.command.CReact;
+import com.volmit.react.service.MonitorSVC;
+import com.volmit.react.service.PlayerSVC;
 import com.volmit.react.service.SampleSVC;
 import com.volmit.react.util.TICK;
 import com.volmit.react.util.nms.Catalyst;
@@ -21,14 +23,16 @@ import com.volmit.volume.lang.collections.GSet;
 @CommandTag("&9[&8&lReact&r&9]&7: ")
 public class React extends VolumePlugin
 {
-	@Command
-	private CReact cReact;
-
 	public static React instance;
 	public static SampleSVC sampleSVC;
+	public static MonitorSVC monitorSVC;
+	public static PlayerSVC playerSVC;
 	public static Thread serverThread;
 	public static Reactor reactor;
 	private GSet<IService> services;
+
+	@Command
+	private CReact cReact;
 
 	@Start
 	public void onStart()
@@ -52,14 +56,16 @@ public class React extends VolumePlugin
 		stopNMS();
 	}
 
-	private void stopNMS()
-	{
-		Catalyst.host.stop();
-	}
-
 	private void registerServices()
 	{
 		services.add(sampleSVC = new SampleSVC());
+		services.add(playerSVC = new PlayerSVC());
+		services.add(monitorSVC = new MonitorSVC());
+	}
+
+	private void stopNMS()
+	{
+		Catalyst.host.stop();
 	}
 
 	private void initNMS()

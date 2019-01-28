@@ -8,9 +8,7 @@ import java.lang.annotation.Target;
 
 @Retention(RUNTIME)
 @Target(FIELD)
-public @interface Clip
+public @interface UniversalType
 {
-	public double min() default Double.MIN_VALUE;
-
-	public double max() default Double.MAX_VALUE;
+	Class<?> value();
 }

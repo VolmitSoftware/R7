@@ -1,16 +1,19 @@
 package com.volmit.react.sampler;
 
-import com.volmit.react.Config;
 import com.volmit.react.React;
 import com.volmit.react.api.IReactorTimer;
 import com.volmit.react.api.RSampler;
 import com.volmit.react.util.C;
 import com.volmit.react.util.Platform;
-import com.volmit.react.util.Scales;
+import com.volmit.react.util.TICK;
 import com.volmit.volume.lang.format.F;
 
 public class SamplerMemoryUse extends RSampler implements IReactorTimer
 {
+	private long allocateda;
+	private long allocatedb;
+	private long allocatedPerSecond;
+	private long allocatedPerTick;
 	private long lastMemoryUsed;
 	private long actualUsage;
 	private long actualGarbage;
@@ -19,13 +22,22 @@ public class SamplerMemoryUse extends RSampler implements IReactorTimer
 	public SamplerMemoryUse()
 	{
 		super("mem-use");
-		setInterval(Scales.scale(Config.REACT_MONITORING_QUALITY, 0, 20));
+		setInterval(0);
 	}
 
 	@Override
 	public void sample()
 	{
 		setValue(actualUsage);
+
+		if(TICK.v(20))
+		{
+			allocatedPerSecond = allocateda;
+			allocateda = 0;
+		}
+
+		allocatedPerTick = allocatedb;
+		allocatedb = 0;
 	}
 
 	@Override
@@ -42,9 +54,21 @@ public class SamplerMemoryUse extends RSampler implements IReactorTimer
 		else
 		{
 			actualGarbage = memUse - actualUsage;
+			allocateda += memUse - actualUsage;
+			allocatedb += memUse - actualUsage;
 		}
 
 		lastMemoryUsed = memUse;
+	}
+
+	public long getAllocatedPerSecond()
+	{
+		return allocatedPerSecond;
+	}
+
+	public long getAllocatedPerTick()
+	{
+		return allocatedPerTick;
 	}
 
 	public long getLastMemoryUsed()

@@ -10,13 +10,13 @@ import com.volmit.react.util.TM;
 import com.volmit.volume.lang.format.F;
 import com.volmit.volume.math.M;
 
-public class SamplerTickServer extends RAveragedSampler implements IReactorTimer
+public class SamplerTickUse extends RAveragedSampler implements IReactorTimer
 {
 	private TM tm;
 	private volatile double time;
 	private volatile boolean waiting;
 
-	public SamplerTickServer()
+	public SamplerTickUse()
 	{
 		super("tick-server", 6);
 		tm = new TM();

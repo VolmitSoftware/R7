@@ -4,9 +4,9 @@ import com.volmit.react.api.RAveragedSampler;
 import com.volmit.react.util.TICK;
 import com.volmit.volume.lang.format.F;
 
-public class SamplerTPS extends RAveragedSampler
+public class SamplerTicksPerSecond extends RAveragedSampler
 {
-	public SamplerTPS()
+	public SamplerTicksPerSecond()
 	{
 		super("tps", 6);
 		setAccuracy(0);

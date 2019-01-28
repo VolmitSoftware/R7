@@ -1,8 +1,10 @@
 package com.volmit.react.sampler;
 
 import com.volmit.react.Config;
+import com.volmit.react.React;
 import com.volmit.react.api.IReactorTimer;
 import com.volmit.react.api.RSampler;
+import com.volmit.react.util.C;
 import com.volmit.react.util.Platform;
 import com.volmit.react.util.Scales;
 import com.volmit.volume.lang.format.F;
@@ -69,5 +71,18 @@ public class SamplerMemoryUse extends RSampler implements IReactorTimer
 	public String format(double v)
 	{
 		return F.fileSize((long) v);
+	}
+
+	@Override
+	public String getTag()
+	{
+		C form = C.BOLD;
+
+		if(React.sampleSVC.getSampler("mem-use-percent").getValue() > 0.75)
+		{
+			form = C.UNDERLINE;
+		}
+
+		return C.GOLD + "" + form + get();
 	}
 }

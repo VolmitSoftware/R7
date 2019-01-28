@@ -1,13 +1,30 @@
 package com.volmit.react.api;
 
+import org.bukkit.event.Listener;
+
 /**
  * Represents a sampler
  *
  * @author cyberpwn
  *
  */
-public interface ISampler
+public interface ISampler extends Listener
 {
+	/**
+	 * Get the tick interval of this sampler
+	 *
+	 * @return the tick interval
+	 */
+	public int getInterval();
+
+	/**
+	 * Set the tick interval of this sampler
+	 *
+	 * @param interval
+	 *            the interval
+	 */
+	public void setInterval(int interval);
+
 	/**
 	 * Hint the sampler formatter to set its accuracy to x digits
 	 *

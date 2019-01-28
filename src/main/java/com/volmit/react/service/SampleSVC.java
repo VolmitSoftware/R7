@@ -7,6 +7,8 @@ import com.volmit.react.api.RSVC;
 import com.volmit.react.sampler.SamplerCPUProcess;
 import com.volmit.react.sampler.SamplerCPUTotal;
 import com.volmit.react.sampler.SamplerMemoryAllocated;
+import com.volmit.react.sampler.SamplerMemoryAllocatedPerSecond;
+import com.volmit.react.sampler.SamplerMemoryAllocatedPerTick;
 import com.volmit.react.sampler.SamplerMemoryAllocatedPercent;
 import com.volmit.react.sampler.SamplerMemoryFree;
 import com.volmit.react.sampler.SamplerMemoryFreePercent;
@@ -48,6 +50,8 @@ public class SampleSVC extends RSVC
 		registerSampler(new SamplerMemoryAllocated());
 		registerSampler(new SamplerMemoryFreePercent());
 		registerSampler(new SamplerMemoryAllocatedPercent());
+		registerSampler(new SamplerMemoryAllocatedPerSecond());
+		registerSampler(new SamplerMemoryAllocatedPerTick());
 	}
 
 	public void registerSampler(ISampler i)

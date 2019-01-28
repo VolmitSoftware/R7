@@ -1,23 +1,24 @@
 package com.volmit.react;
 
-import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
+import com.volmit.react.util.C;
 import com.volmit.react.util.nms.FrameType;
 import com.volmit.react.util.nms.NMP;
 import com.volmit.react.util.nms.NMSVersion;
+import com.volmit.volume.bukkit.command.VolumeSender;
 
 public class Gate
 {
-	public static final String TAG = ChatColor.BLUE + "[" + ChatColor.DARK_GRAY + ChatColor.BOLD + "React" + ChatColor.RESET + ChatColor.BLUE + "]" + ChatColor.GRAY + ": ";
-	public static final String TAG_NP = ChatColor.BLUE + "[" + ChatColor.DARK_GRAY + ChatColor.BOLD + "React" + ChatColor.RESET + ChatColor.BLUE + "]" + ChatColor.GRAY;
+	public static final String TAG = C.BLUE + "[" + C.DARK_GRAY + C.BOLD + "React" + C.RESET + C.BLUE + "]" + C.GRAY + ": ";
+	public static final String TAG_NP = C.BLUE + "[" + C.DARK_GRAY + C.BOLD + "React" + C.RESET + C.BLUE + "]" + C.GRAY;
 
 	public static void msg(CommandSender s, String message)
 	{
-		s.sendMessage(TAG + message);
+		s.sendMessage((s instanceof VolumeSender ? "" : TAG) + message);
 	}
 
 	public static void notifSuccess(Player p, String message)
@@ -39,7 +40,7 @@ public class Gate
 	{
 		if(NMSVersion.R1_9_2.betweenInclusive(NMSVersion.R1_13).contains(NMSVersion.current()))
 		{
-			NMP.MESSAGE.advance(p, is, TAG + "\n" + ChatColor.GRAY + message, FrameType.GOAL);
+			NMP.MESSAGE.advance(p, is, TAG + "\n" + C.GRAY + message, FrameType.GOAL);
 		}
 
 		else

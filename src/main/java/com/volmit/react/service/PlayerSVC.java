@@ -133,4 +133,9 @@ public class PlayerSVC extends RSVC
 	{
 		load.add(p);
 	}
+
+	public ReactPlayer getPlayer(UUID uniqueId)
+	{
+		return players.get(uniqueId);
+	}
 }

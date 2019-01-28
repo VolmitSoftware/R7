@@ -4,7 +4,8 @@ import com.volmit.react.React;
 import com.volmit.react.api.IReactorTimer;
 import com.volmit.react.api.ISampler;
 import com.volmit.react.api.RSVC;
-import com.volmit.react.sampler.SamplerServerTick;
+import com.volmit.react.sampler.SamplerMemoryUse;
+import com.volmit.react.sampler.SamplerTickServer;
 import com.volmit.react.sampler.SamplerTPS;
 import com.volmit.react.util.TICK;
 import com.volmit.volume.lang.collections.GMap;
@@ -27,7 +28,8 @@ public class SampleSVC extends RSVC
 	private void registerAll()
 	{
 		registerSampler(new SamplerTPS());
-		registerSampler(new SamplerServerTick());
+		registerSampler(new SamplerTickServer());
+		registerSampler(new SamplerMemoryUse());
 	}
 
 	public void registerSampler(ISampler i)

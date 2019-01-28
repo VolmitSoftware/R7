@@ -16,6 +16,11 @@ public class Gate
 	public static final String TAG = C.BLUE + "[" + C.DARK_GRAY + C.BOLD + "React" + C.RESET + C.BLUE + "]" + C.GRAY + ": ";
 	public static final String TAG_NP = C.BLUE + "[" + C.DARK_GRAY + C.BOLD + "React" + C.RESET + C.BLUE + "]" + C.GRAY;
 
+	public static boolean canHavePlayerData(Player p)
+	{
+		return p.hasPermission("react.use") || p.hasPermission("react.monitor");
+	}
+
 	public static void msg(CommandSender s, String message)
 	{
 		s.sendMessage((s instanceof VolumeSender ? "" : TAG) + message);

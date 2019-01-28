@@ -6,11 +6,11 @@ import org.bukkit.event.Listener;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import com.volmit.react.api.IService;
-import com.volmit.react.nms.Catalyst;
-import com.volmit.react.nms.NMP;
-import com.volmit.react.nms.NMSVersion;
 import com.volmit.react.service.SampleSVC;
 import com.volmit.react.util.TICK;
+import com.volmit.react.util.nms.Catalyst;
+import com.volmit.react.util.nms.NMP;
+import com.volmit.react.util.nms.NMSVersion;
 import com.volmit.volume.lang.collections.GSet;
 
 public class React extends JavaPlugin

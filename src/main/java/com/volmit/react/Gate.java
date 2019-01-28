@@ -6,9 +6,9 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
-import com.volmit.react.nms.FrameType;
-import com.volmit.react.nms.NMP;
-import com.volmit.react.nms.NMSVersion;
+import com.volmit.react.util.nms.FrameType;
+import com.volmit.react.util.nms.NMP;
+import com.volmit.react.util.nms.NMSVersion;
 
 public class Gate
 {

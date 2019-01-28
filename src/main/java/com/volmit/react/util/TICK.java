@@ -11,6 +11,7 @@ public class TICK
 	public static void tick()
 	{
 		lms = tm.markReset();
+		tick++;
 	}
 
 	public static boolean v(int interval)

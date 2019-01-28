@@ -4,6 +4,8 @@ import com.volmit.react.React;
 import com.volmit.react.api.IReactorTimer;
 import com.volmit.react.api.ISampler;
 import com.volmit.react.api.RSVC;
+import com.volmit.react.sampler.SamplerCPUProcess;
+import com.volmit.react.sampler.SamplerCPUTotal;
 import com.volmit.react.sampler.SamplerMemoryAllocated;
 import com.volmit.react.sampler.SamplerMemoryAllocatedPercent;
 import com.volmit.react.sampler.SamplerMemoryFree;
@@ -11,9 +13,9 @@ import com.volmit.react.sampler.SamplerMemoryFreePercent;
 import com.volmit.react.sampler.SamplerMemoryMax;
 import com.volmit.react.sampler.SamplerMemoryUse;
 import com.volmit.react.sampler.SamplerMemoryUsePercent;
-import com.volmit.react.sampler.SamplerTicksPerSecond;
 import com.volmit.react.sampler.SamplerTickUse;
 import com.volmit.react.sampler.SamplerTickUsePercent;
+import com.volmit.react.sampler.SamplerTicksPerSecond;
 import com.volmit.react.util.TICK;
 import com.volmit.volume.lang.collections.GMap;
 
@@ -34,6 +36,8 @@ public class SampleSVC extends RSVC
 
 	private void registerAll()
 	{
+		registerSampler(new SamplerCPUProcess());
+		registerSampler(new SamplerCPUTotal());
 		registerSampler(new SamplerTicksPerSecond());
 		registerSampler(new SamplerTickUse());
 		registerSampler(new SamplerTickUsePercent());

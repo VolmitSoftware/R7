@@ -79,4 +79,9 @@ public class RollingAverage
 		average = v;
 		dirty = false;
 	}
+
+	public int size()
+	{
+		return data.length;
+	}
 }

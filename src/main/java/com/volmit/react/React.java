@@ -6,6 +6,9 @@ import org.bukkit.event.Listener;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import com.volmit.react.api.IService;
+import com.volmit.react.nms.Catalyst;
+import com.volmit.react.nms.NMP;
+import com.volmit.react.nms.NMSVersion;
 import com.volmit.react.service.SampleSVC;
 import com.volmit.react.util.TICK;
 import com.volmit.volume.lang.collections.GSet;
@@ -28,11 +31,29 @@ public class React extends JavaPlugin
 	{
 		serverThread = Thread.currentThread();
 		instance = this;
+		initNMS();
 		startReactor();
 		services = new GSet<>();
 		Bukkit.getScheduler().scheduleSyncRepeatingTask(this, () -> tick(false), 0, 0);
 		registerServices();
 		startServices();
+	}
+
+	private void initNMS()
+	{
+		Catalyst.host.start();
+		NMP.host = Catalyst.host;
+		NMSVersion v = NMSVersion.current();
+
+		if(v != null)
+		{
+			getLogger().info("Selected " + NMSVersion.current().name());
+		}
+
+		else
+		{
+			getLogger().info("Could not find a suitable binder for this server version!");
+		}
 	}
 
 	private void registerServices()

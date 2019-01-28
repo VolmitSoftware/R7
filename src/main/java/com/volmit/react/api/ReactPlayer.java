@@ -2,10 +2,18 @@ package com.volmit.react.api;
 
 import java.util.UUID;
 
+import org.bukkit.Bukkit;
+import org.bukkit.entity.Player;
+
 public class ReactPlayer
 {
 	private UUID id;
 	private boolean monitoring;
+
+	public Player player()
+	{
+		return Bukkit.getPlayer(id);
+	}
 
 	public ReactPlayer()
 	{

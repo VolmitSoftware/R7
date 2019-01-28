@@ -1,11 +1,12 @@
 package com.volmit.react;
 
+import com.volmit.react.api.IReactorTimer;
 import com.volmit.react.util.Scales;
 import com.volmit.volume.lang.collections.GSet;
 
 public class Reactor extends Thread
 {
-	private final GSet<Runnable> timers;
+	private final GSet<IReactorTimer> timers;
 
 	public Reactor()
 	{
@@ -14,9 +15,9 @@ public class Reactor extends Thread
 		setPriority(Scales.scale(Config.REACT_MONITORING_QUALITY, MIN_PRIORITY, NORM_PRIORITY));
 	}
 
-	public void addReactorTimer(Runnable r)
+	public void addReactorTimer(IReactorTimer r)
 	{
-
+		timers.add(r);
 	}
 
 	@Override
@@ -27,6 +28,11 @@ public class Reactor extends Thread
 			try
 			{
 				Thread.sleep(Scales.scale(Config.REACT_MONITORING_QUALITY, 1, 5));
+
+				for(IReactorTimer i : timers)
+				{
+					i.onReactorCompute();
+				}
 			}
 
 			catch(InterruptedException e)

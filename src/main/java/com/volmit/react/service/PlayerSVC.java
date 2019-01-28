@@ -1,5 +1,6 @@
 package com.volmit.react.service;
 
+import java.util.Collection;
 import java.util.UUID;
 
 import org.bukkit.Bukkit;
@@ -32,9 +33,9 @@ public class PlayerSVC extends RSVC
 		save = new GList<>();
 	}
 
-	public GList<ReactPlayer> getPlayers()
+	public Collection<ReactPlayer> getPlayers()
 	{
-		return players.v();
+		return players.values();
 	}
 
 	public boolean hasData(Player p)

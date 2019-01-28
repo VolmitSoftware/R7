@@ -44,7 +44,7 @@ public class Catalyst12 extends CatalystPacketListener implements CatalystHost
 	@Override
 	public void sendAdvancement(Player p, FrameType type, ItemStack is, String text)
 	{
-		AdvancementHolder a = new AdvancementHolder(UUID.randomUUID().toString());
+		AdvancementHolder12 a = new AdvancementHolder12(UUID.randomUUID().toString());
 		a.withToast(true);
 		a.withDescription("?");
 		a.withFrame(type);

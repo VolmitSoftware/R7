@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.UUID;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Chunk;
@@ -44,26 +43,7 @@ public class Catalyst13 extends CatalystPacketListener implements CatalystHost
 	@Override
 	public void sendAdvancement(Player p, FrameType type, ItemStack is, String text)
 	{
-		AdvancementHolder a = new AdvancementHolder(UUID.randomUUID().toString());
-		a.withToast(true);
-		a.withDescription("?");
-		a.withFrame(type);
-		a.withAnnouncement(false);
-		a.withTitle(text);
-		a.withTrigger("minecraft:impossible");
-		a.withIcon(is.getData());
-		a.withBackground("minecraft:textures/blocks/bedrock.png");
-		a.loadAdvancement();
-		a.sendPlayer(p);
-
-		Bukkit.getScheduler().scheduleSyncDelayedTask(React.instance, new Runnable()
-		{
-			@Override
-			public void run()
-			{
-				a.delete(p);
-			}
-		}, 1);
+		// TODO 1.13.X NMS Advancements AdvancementHolder13
 	}
 
 	// START PACKETS

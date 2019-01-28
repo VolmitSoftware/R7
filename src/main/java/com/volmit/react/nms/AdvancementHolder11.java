@@ -15,8 +15,8 @@ import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
 import org.bukkit.World;
 import org.bukkit.advancement.Advancement;
-import org.bukkit.craftbukkit.v1_12_R1.inventory.CraftItemStack;
-import org.bukkit.craftbukkit.v1_12_R1.util.CraftMagicNumbers;
+import org.bukkit.craftbukkit.v1_11_R1.inventory.CraftItemStack;
+import org.bukkit.craftbukkit.v1_11_R1.util.CraftMagicNumbers;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.material.MaterialData;
@@ -28,23 +28,24 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.volmit.react.React;
 
-import net.minecraft.server.v1_12_R1.Item;
-import net.minecraft.server.v1_12_R1.MinecraftKey;
+import net.minecraft.server.v1_11_R1.Item;
+import net.minecraft.server.v1_11_R1.MinecraftKey;
 
-public class AdvancementHolder
+
+public class AdvancementHolder11
 {
 	private NamespacedKey id;
 	private String title, parent, trigger, icon, description, background, frame;
 	private Integer subID = 0, amount = 0;
 	private boolean announce, toast = true;
 	private List<ItemStack> items;
-	public List<AdvancementHolder> holders = new ArrayList<AdvancementHolder>();
+	public List<AdvancementHolder11> holders = new ArrayList<AdvancementHolder11>();
 
-	public void addAdvancment(AdvancementHolder api)
+	public void addAdvancment(AdvancementHolder11 api)
 	{
 		NamespacedKey key = api.getID();
 
-		for(AdvancementHolder adAPI : this.holders)
+		for(AdvancementHolder11 adAPI : this.holders)
 		{
 			if(adAPI.getID().toString().equalsIgnoreCase(key.toString()))
 			{
@@ -77,7 +78,7 @@ public class AdvancementHolder
 		}
 	}
 
-	public AdvancementHolder(String id)
+	public AdvancementHolder11(String id)
 	{
 		this.id = new NamespacedKey(React.instance, "story/" + id);
 		this.items = Lists.newArrayList();
@@ -94,27 +95,27 @@ public class AdvancementHolder
 		return icon;
 	}
 
-	public AdvancementHolder withIcon(String icon)
+	public AdvancementHolder11 withIcon(String icon)
 	{
 		this.icon = icon;
 		return this;
 	}
 
-	public AdvancementHolder withIcon(Material material)
+	public AdvancementHolder11 withIcon(Material material)
 	{
 		this.icon = getMinecraftIDFrom(new ItemStack(material));
 		return this;
 	}
 
 	@SuppressWarnings("deprecation")
-	public AdvancementHolder withIcon(MaterialData material)
+	public AdvancementHolder11 withIcon(MaterialData material)
 	{
 		this.icon = getMinecraftIDFrom(new ItemStack(material.getItemType()));
 		this.subID = (int) material.getData();
 		return this;
 	}
 
-	public AdvancementHolder withIconData(int subID)
+	public AdvancementHolder11 withIconData(int subID)
 	{
 		this.subID = subID;
 		return this;
@@ -125,7 +126,7 @@ public class AdvancementHolder
 		return description;
 	}
 
-	public AdvancementHolder withDescription(String description)
+	public AdvancementHolder11 withDescription(String description)
 	{
 		this.description = description;
 		return this;
@@ -136,13 +137,13 @@ public class AdvancementHolder
 		return background;
 	}
 
-	public AdvancementHolder withBackground(String url)
+	public AdvancementHolder11 withBackground(String url)
 	{
 		this.background = url;
 		return this;
 	}
 
-	public AdvancementHolder withAmount(int i)
+	public AdvancementHolder11 withAmount(int i)
 	{
 		this.amount = i;
 		return this;
@@ -153,7 +154,7 @@ public class AdvancementHolder
 		return title;
 	}
 
-	public AdvancementHolder withTitle(String title)
+	public AdvancementHolder11 withTitle(String title)
 	{
 		this.title = title;
 		return this;
@@ -164,13 +165,13 @@ public class AdvancementHolder
 		return parent;
 	}
 
-	public AdvancementHolder withParent(String parent)
+	public AdvancementHolder11 withParent(String parent)
 	{
 		this.parent = parent;
 		return this;
 	}
 
-	public AdvancementHolder withToast(boolean bool)
+	public AdvancementHolder11 withToast(boolean bool)
 	{
 		this.toast = bool;
 		return this;
@@ -181,7 +182,7 @@ public class AdvancementHolder
 		return trigger;
 	}
 
-	public AdvancementHolder withTrigger(String trigger)
+	public AdvancementHolder11 withTrigger(String trigger)
 	{
 		this.trigger = trigger;
 		return this;
@@ -192,7 +193,7 @@ public class AdvancementHolder
 		return items;
 	}
 
-	public AdvancementHolder withItem(ItemStack is)
+	public AdvancementHolder11 withItem(ItemStack is)
 	{
 		items.add(is);
 		return this;
@@ -203,7 +204,7 @@ public class AdvancementHolder
 		return frame;
 	}
 
-	public AdvancementHolder withFrame(FrameType frame)
+	public AdvancementHolder11 withFrame(FrameType frame)
 	{
 		this.frame = frame.getName();
 		return this;
@@ -214,7 +215,7 @@ public class AdvancementHolder
 		return announce;
 	}
 
-	public AdvancementHolder withAnnouncement(boolean announce)
+	public AdvancementHolder11 withAnnouncement(boolean announce)
 	{
 		this.announce = announce;
 		return this;

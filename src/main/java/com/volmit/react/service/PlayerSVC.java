@@ -32,6 +32,16 @@ public class PlayerSVC extends RSVC
 		save = new GList<>();
 	}
 
+	public GList<ReactPlayer> getPlayers()
+	{
+		return players.v();
+	}
+
+	public boolean hasData(Player p)
+	{
+		return Gate.canHavePlayerData(p) && players.contains(p.getUniqueId());
+	}
+
 	@EventHandler
 	public void on(PlayerJoinEvent e)
 	{

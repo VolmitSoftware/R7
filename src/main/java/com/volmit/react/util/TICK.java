@@ -10,4 +10,9 @@ public class TICK
 	{
 		return tick % M.clip(interval, 1, Integer.MAX_VALUE) == 0;
 	}
+
+	public static double getTPS(double milliseconds)
+	{
+		return Math.min(20D, 1000D / milliseconds);
+	}
 }

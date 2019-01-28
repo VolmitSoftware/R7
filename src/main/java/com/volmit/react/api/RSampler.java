@@ -8,11 +8,13 @@ public abstract class RSampler implements ISampler
 	private String displayName;
 	private String description;
 	private int accuracy;
+	private int interval;
 
 	public RSampler(String id)
 	{
 		this.id = id;
 	}
+
 
 	/**
 	 * Set the shortcode
@@ -111,5 +113,17 @@ public abstract class RSampler implements ISampler
 	public int getAccuracy()
 	{
 		return accuracy;
+	}
+
+	@Override
+	public int getInterval()
+	{
+		return interval;
+	}
+
+	@Override
+	public void setInterval(int interval)
+	{
+		this.interval = interval;
 	}
 }

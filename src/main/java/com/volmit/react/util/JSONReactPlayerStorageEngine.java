@@ -23,6 +23,7 @@ public class JSONReactPlayerStorageEngine implements IStorageEngine<UUID, ReactP
 	public JSONReactPlayerStorageEngine(File folder)
 	{
 		this.folder = folder;
+		folder.mkdirs();
 	}
 
 	@Override

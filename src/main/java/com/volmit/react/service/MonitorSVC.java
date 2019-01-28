@@ -3,6 +3,7 @@ package com.volmit.react.service;
 import com.volmit.react.React;
 import com.volmit.react.api.RSVC;
 import com.volmit.react.api.ReactPlayer;
+import com.volmit.react.util.C;
 import com.volmit.react.util.nms.NMP;
 
 public class MonitorSVC extends RSVC
@@ -31,7 +32,21 @@ public class MonitorSVC extends RSVC
 
 	private String getMonitor(ReactPlayer i)
 	{
-		return React.sampleSVC.getSampler("tps").get();
+		String t = "";
+		boolean m = i.player().isSneaking();
+		SampleSVC s = React.sampleSVC;
+		//@builder
+		t += " " + (!m ? s.getSampler("tps") :
+			s.getSampler("tick-server") + " " + C.RESET + s.getSampler("tick-server-percent"));
+		t += " " + (!m ? s.getSampler("mem-use") + "" + C.RESET + C.DARK_GRAY + " (" + s.getSampler("mem-use-percent") + C.RESET + "" + C.DARK_GRAY + ")"  :
+			s.getSampler("tick-server") + " " + C.RESET + s.getSampler("tick-server-percent"));
+		t += " " + (!m ? s.getSampler("tps") : s.getSampler("tick-server") + " " + C.RESET + s.getSampler("tick-server-percent"));
+		t += " " + (!m ? s.getSampler("tps") : s.getSampler("tick-server") + " " + C.RESET + s.getSampler("tick-server-percent"));
+		t += " " + (!m ? s.getSampler("tps") : s.getSampler("tick-server") + " " + C.RESET + s.getSampler("tick-server-percent"));
+		t += " " + (!m ? s.getSampler("tps") : s.getSampler("tick-server") + " " + C.RESET + s.getSampler("tick-server-percent"));
+		t += " " + (!m ? s.getSampler("tps") : s.getSampler("tick-server") + " " + C.RESET + s.getSampler("tick-server-percent"));
+		//@done
+		return t.substring(1).trim();
 	}
 
 	@Override

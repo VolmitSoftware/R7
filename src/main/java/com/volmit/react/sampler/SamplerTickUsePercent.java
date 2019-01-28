@@ -1,6 +1,8 @@
 package com.volmit.react.sampler;
 
+import com.volmit.react.Config;
 import com.volmit.react.api.RAveragedSampler;
+import com.volmit.react.util.Scales;
 import com.volmit.volume.lang.format.F;
 
 public class SamplerTickUsePercent extends RAveragedSampler
@@ -8,7 +10,7 @@ public class SamplerTickUsePercent extends RAveragedSampler
 	public SamplerTickUsePercent()
 	{
 		super("tick-server-percent", 5);
-		setInterval(20);
+		setInterval(Scales.scale(Config.REACT_MONITORING_QUALITY, 0, 10));
 	}
 
 	@Override

@@ -9,6 +9,7 @@ public abstract class RAveragedSampler extends RSampler implements IAveragedSamp
 	public RAveragedSampler(String id, int radius)
 	{
 		super(id);
+		setAverageSize(radius);
 	}
 
 	@Override

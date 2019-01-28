@@ -2,7 +2,14 @@ package com.volmit.react.service;
 
 import java.util.UUID;
 
+import org.bukkit.Bukkit;
+import org.bukkit.entity.Player;
+import org.bukkit.event.EventHandler;
+import org.bukkit.event.player.PlayerJoinEvent;
+import org.bukkit.event.player.PlayerQuitEvent;
+
 import com.volmit.react.Config;
+import com.volmit.react.Gate;
 import com.volmit.react.React;
 import com.volmit.react.api.RSVC;
 import com.volmit.react.api.ReactPlayer;
@@ -25,6 +32,21 @@ public class PlayerSVC extends RSVC
 		save = new GList<>();
 	}
 
+	@EventHandler
+	public void on(PlayerJoinEvent e)
+	{
+		if(Gate.canHavePlayerData(e.getPlayer()))
+		{
+			requestLoad(e.getPlayer().getUniqueId());
+		}
+	}
+
+	@EventHandler
+	public void on(PlayerQuitEvent e)
+	{
+		requestSave(e.getPlayer().getUniqueId());
+	}
+
 	@Override
 	public void onStart()
 	{
@@ -37,12 +59,26 @@ public class PlayerSVC extends RSVC
 		{
 			engine = new JSONReactPlayerStorageEngine(React.instance.getDataFolder("data", "player"));
 		}
+
+		for(Player i : Bukkit.getOnlinePlayers())
+		{
+			if(Gate.canHavePlayerData(i))
+			{
+				requestLoad(i.getUniqueId());
+			}
+		}
 	}
 
 	@Override
 	public void onStop()
 	{
-
+		for(Player i : Bukkit.getOnlinePlayers())
+		{
+			if(Gate.canHavePlayerData(i))
+			{
+				saveNow(i.getUniqueId());
+			}
+		}
 	}
 
 	@Override
@@ -69,6 +105,11 @@ public class PlayerSVC extends RSVC
 
 	public void loadNow(UUID p)
 	{
+		if(!engine.exists(p))
+		{
+			engine.save(p, new ReactPlayer(p));
+		}
+
 		players.put(p, engine.load(p));
 	}
 

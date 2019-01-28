@@ -1,27 +1,27 @@
-package com.volmit.react.inventory;
+package com.volmit.react.util.inventory;
 
-import org.bukkit.craftbukkit.v1_11_R1.entity.CraftPlayer;
-import org.bukkit.craftbukkit.v1_11_R1.event.CraftEventFactory;
+import org.bukkit.craftbukkit.v1_9_R2.entity.CraftPlayer;
+import org.bukkit.craftbukkit.v1_9_R2.event.CraftEventFactory;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
 
-import net.minecraft.server.v1_11_R1.BlockPosition;
-import net.minecraft.server.v1_11_R1.Blocks;
-import net.minecraft.server.v1_11_R1.ChatMessage;
-import net.minecraft.server.v1_11_R1.Container;
-import net.minecraft.server.v1_11_R1.ContainerAnvil;
-import net.minecraft.server.v1_11_R1.EntityHuman;
-import net.minecraft.server.v1_11_R1.EntityPlayer;
-import net.minecraft.server.v1_11_R1.PacketPlayOutCloseWindow;
-import net.minecraft.server.v1_11_R1.PacketPlayOutOpenWindow;
+import net.minecraft.server.v1_9_R2.BlockPosition;
+import net.minecraft.server.v1_9_R2.Blocks;
+import net.minecraft.server.v1_9_R2.ChatMessage;
+import net.minecraft.server.v1_9_R2.Container;
+import net.minecraft.server.v1_9_R2.ContainerAnvil;
+import net.minecraft.server.v1_9_R2.EntityHuman;
+import net.minecraft.server.v1_9_R2.EntityPlayer;
+import net.minecraft.server.v1_9_R2.PacketPlayOutCloseWindow;
+import net.minecraft.server.v1_9_R2.PacketPlayOutOpenWindow;
 
 /**
- * {@link VersionWrapper} implemented for NMS version 1_11_R1
+ * {@link VersionWrapper} implemented for NMS version 1_9_R2
  *
  * @author Wesley Smith
- * @since 1.1.1
+ * @since 1.0
  */
-public class Wrapper1_11_R1 implements VersionWrapper
+public class Wrapper1_9_R2 implements VersionWrapper
 {
 
 	/**
@@ -111,7 +111,7 @@ public class Wrapper1_11_R1 implements VersionWrapper
 	@Override
 	public Object newContainerAnvil(Player player)
 	{
-		return new Wrapper1_11_R1.AnvilContainer(toNMS(player));
+		return new AnvilContainer(toNMS(player));
 	}
 
 	/**

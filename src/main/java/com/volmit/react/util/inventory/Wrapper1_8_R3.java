@@ -1,29 +1,28 @@
-package com.volmit.react.inventory;
+package com.volmit.react.util.inventory;
 
-import org.bukkit.craftbukkit.v1_12_R1.entity.CraftPlayer;
-import org.bukkit.craftbukkit.v1_12_R1.event.CraftEventFactory;
+import org.bukkit.craftbukkit.v1_8_R3.entity.CraftPlayer;
+import org.bukkit.craftbukkit.v1_8_R3.event.CraftEventFactory;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
 
-import net.minecraft.server.v1_12_R1.BlockPosition;
-import net.minecraft.server.v1_12_R1.Blocks;
-import net.minecraft.server.v1_12_R1.ChatMessage;
-import net.minecraft.server.v1_12_R1.Container;
-import net.minecraft.server.v1_12_R1.ContainerAnvil;
-import net.minecraft.server.v1_12_R1.EntityHuman;
-import net.minecraft.server.v1_12_R1.EntityPlayer;
-import net.minecraft.server.v1_12_R1.PacketPlayOutCloseWindow;
-import net.minecraft.server.v1_12_R1.PacketPlayOutOpenWindow;
+import net.minecraft.server.v1_8_R3.BlockPosition;
+import net.minecraft.server.v1_8_R3.Blocks;
+import net.minecraft.server.v1_8_R3.ChatMessage;
+import net.minecraft.server.v1_8_R3.Container;
+import net.minecraft.server.v1_8_R3.ContainerAnvil;
+import net.minecraft.server.v1_8_R3.EntityHuman;
+import net.minecraft.server.v1_8_R3.EntityPlayer;
+import net.minecraft.server.v1_8_R3.PacketPlayOutCloseWindow;
+import net.minecraft.server.v1_8_R3.PacketPlayOutOpenWindow;
 
 /**
- * {@link VersionWrapper} implemented for NMS version 1_12_R2
+ * {@link VersionWrapper} implemented for NMS version 1_8_R3
  *
  * @author Wesley Smith
- * @since 1.1.1
+ * @since 1.0
  */
-public class Wrapper1_12_R1 implements VersionWrapper
+public class Wrapper1_8_R3 implements VersionWrapper
 {
-
 	/**
 	 * {@inheritDoc}
 	 */
@@ -111,7 +110,7 @@ public class Wrapper1_12_R1 implements VersionWrapper
 	@Override
 	public Object newContainerAnvil(Player player)
 	{
-		return new Wrapper1_12_R1.AnvilContainer(toNMS(player));
+		return new AnvilContainer(toNMS(player));
 	}
 
 	/**
@@ -139,7 +138,7 @@ public class Wrapper1_12_R1 implements VersionWrapper
 		}
 
 		@Override
-		public boolean canUse(EntityHuman entityhuman)
+		public boolean a(EntityHuman human)
 		{
 			return true;
 		}

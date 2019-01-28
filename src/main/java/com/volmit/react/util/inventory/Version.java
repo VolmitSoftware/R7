@@ -1,4 +1,4 @@
-package com.volmit.react.inventory;
+package com.volmit.react.util.inventory;
 import java.util.Arrays;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.TimeUnit;

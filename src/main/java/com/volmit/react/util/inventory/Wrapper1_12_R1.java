@@ -1,27 +1,27 @@
-package com.volmit.react.inventory;
+package com.volmit.react.util.inventory;
 
-import org.bukkit.craftbukkit.v1_9_R1.entity.CraftPlayer;
-import org.bukkit.craftbukkit.v1_9_R1.event.CraftEventFactory;
+import org.bukkit.craftbukkit.v1_12_R1.entity.CraftPlayer;
+import org.bukkit.craftbukkit.v1_12_R1.event.CraftEventFactory;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
 
-import net.minecraft.server.v1_9_R1.BlockPosition;
-import net.minecraft.server.v1_9_R1.Blocks;
-import net.minecraft.server.v1_9_R1.ChatMessage;
-import net.minecraft.server.v1_9_R1.Container;
-import net.minecraft.server.v1_9_R1.ContainerAnvil;
-import net.minecraft.server.v1_9_R1.EntityHuman;
-import net.minecraft.server.v1_9_R1.EntityPlayer;
-import net.minecraft.server.v1_9_R1.PacketPlayOutCloseWindow;
-import net.minecraft.server.v1_9_R1.PacketPlayOutOpenWindow;
+import net.minecraft.server.v1_12_R1.BlockPosition;
+import net.minecraft.server.v1_12_R1.Blocks;
+import net.minecraft.server.v1_12_R1.ChatMessage;
+import net.minecraft.server.v1_12_R1.Container;
+import net.minecraft.server.v1_12_R1.ContainerAnvil;
+import net.minecraft.server.v1_12_R1.EntityHuman;
+import net.minecraft.server.v1_12_R1.EntityPlayer;
+import net.minecraft.server.v1_12_R1.PacketPlayOutCloseWindow;
+import net.minecraft.server.v1_12_R1.PacketPlayOutOpenWindow;
 
 /**
- * {@link VersionWrapper} implemented for NMS version 1_9_R1
+ * {@link VersionWrapper} implemented for NMS version 1_12_R2
  *
  * @author Wesley Smith
- * @since 1.0
+ * @since 1.1.1
  */
-public class Wrapper1_9_R1 implements VersionWrapper
+public class Wrapper1_12_R1 implements VersionWrapper
 {
 
 	/**
@@ -111,7 +111,7 @@ public class Wrapper1_9_R1 implements VersionWrapper
 	@Override
 	public Object newContainerAnvil(Player player)
 	{
-		return new AnvilContainer(toNMS(player));
+		return new Wrapper1_12_R1.AnvilContainer(toNMS(player));
 	}
 
 	/**
@@ -139,7 +139,7 @@ public class Wrapper1_9_R1 implements VersionWrapper
 		}
 
 		@Override
-		public boolean a(EntityHuman entityhuman)
+		public boolean canUse(EntityHuman entityhuman)
 		{
 			return true;
 		}

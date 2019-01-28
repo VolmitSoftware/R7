@@ -1,4 +1,4 @@
-package com.volmit.react.inventory;
+package com.volmit.react.util.inventory;
 
 public abstract class RString
 {

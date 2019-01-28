@@ -1,4 +1,4 @@
-package com.volmit.react.inventory;
+package com.volmit.react.util.inventory;
 
 import java.util.function.BiFunction;
 

@@ -3,3 +3,7 @@ version: ${project.version}
 main: ${react.main}
 authors: [cyberpwn]
 load: STARTUP
+website: https://www.spigotmc.org/resources/react-smart-server-performance.21057/
+database: false
+softdepend: [ProtocolLib, FastAsyncWorldEdit, PlaceholderAPI]
+prefix: React

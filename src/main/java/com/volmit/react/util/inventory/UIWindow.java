@@ -1,4 +1,4 @@
-package com.volmit.react.inventory;
+package com.volmit.react.util.inventory;
 
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;

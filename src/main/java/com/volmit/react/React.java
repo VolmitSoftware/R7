@@ -3,31 +3,35 @@ package com.volmit.react;
 import org.bukkit.Bukkit;
 import org.bukkit.event.HandlerList;
 import org.bukkit.event.Listener;
-import org.bukkit.plugin.java.JavaPlugin;
 
 import com.volmit.react.api.IService;
+import com.volmit.react.command.CReact;
 import com.volmit.react.service.SampleSVC;
 import com.volmit.react.util.TICK;
 import com.volmit.react.util.nms.Catalyst;
 import com.volmit.react.util.nms.NMP;
 import com.volmit.react.util.nms.NMSVersion;
+import com.volmit.volume.bukkit.VolumePlugin;
+import com.volmit.volume.bukkit.command.Command;
+import com.volmit.volume.bukkit.command.CommandTag;
+import com.volmit.volume.bukkit.pawn.Start;
+import com.volmit.volume.bukkit.pawn.Stop;
 import com.volmit.volume.lang.collections.GSet;
 
-public class React extends JavaPlugin
+@CommandTag("&9[&8&lReact&r&9]&7: ")
+public class React extends VolumePlugin
 {
+	@Command
+	private CReact cReact;
+
 	public static React instance;
 	public static SampleSVC sampleSVC;
 	public static Thread serverThread;
 	public static Reactor reactor;
 	private GSet<IService> services;
 
-	public React()
-	{
-		super();
-	}
-
-	@Override
-	public void onEnable()
+	@Start
+	public void onStart()
 	{
 		serverThread = Thread.currentThread();
 		instance = this;
@@ -37,6 +41,25 @@ public class React extends JavaPlugin
 		Bukkit.getScheduler().scheduleSyncRepeatingTask(this, () -> tick(false), 0, 0);
 		registerServices();
 		startServices();
+	}
+
+	@Stop
+	public void onStop()
+	{
+		Bukkit.getScheduler().cancelTasks(instance);
+		stopServices();
+		stopReactor();
+		stopNMS();
+	}
+
+	private void stopNMS()
+	{
+		Catalyst.host.stop();
+	}
+
+	private void registerServices()
+	{
+		services.add(sampleSVC = new SampleSVC());
 	}
 
 	private void initNMS()
@@ -54,19 +77,6 @@ public class React extends JavaPlugin
 		{
 			getLogger().info("Could not find a suitable binder for this server version!");
 		}
-	}
-
-	private void registerServices()
-	{
-		services.add(sampleSVC = new SampleSVC());
-	}
-
-	@Override
-	public void onDisable()
-	{
-		Bukkit.getScheduler().cancelTasks(instance);
-		stopServices();
-		stopReactor();
 	}
 
 	private void stopReactor()
@@ -102,6 +112,7 @@ public class React extends JavaPlugin
 	{
 		if(!async)
 		{
+			instance = this;
 			TICK.tick();
 			verifyReactor();
 		}
@@ -121,16 +132,6 @@ public class React extends JavaPlugin
 				}
 			}
 		}
-	}
-
-	public void register(Listener i)
-	{
-		Bukkit.getPluginManager().registerEvents(i, this);
-	}
-
-	public void unregister(Listener i)
-	{
-		HandlerList.unregisterAll(i);
 	}
 
 	private void verifyReactor()
@@ -159,4 +160,13 @@ public class React extends JavaPlugin
 		return reactor.lastTick() < 100;
 	}
 
+	public void register(Listener i)
+	{
+		Bukkit.getPluginManager().registerEvents(i, this);
+	}
+
+	public void unregister(Listener i)
+	{
+		HandlerList.unregisterAll(i);
+	}
 }

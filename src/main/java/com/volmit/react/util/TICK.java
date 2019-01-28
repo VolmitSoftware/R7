@@ -4,7 +4,14 @@ import com.volmit.volume.math.M;
 
 public class TICK
 {
-	public static long tick = 0;
+	public static long tick;
+	public static double lms;
+	private static TM tm = new TM();
+
+	public static void tick()
+	{
+		lms = tm.markReset();
+	}
 
 	public static boolean v(int interval)
 	{

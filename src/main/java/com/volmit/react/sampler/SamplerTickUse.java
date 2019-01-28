@@ -6,6 +6,7 @@ import com.volmit.react.Config;
 import com.volmit.react.React;
 import com.volmit.react.api.IReactorTimer;
 import com.volmit.react.api.RAveragedSampler;
+import com.volmit.react.util.C;
 import com.volmit.react.util.Scales;
 import com.volmit.react.util.TICK;
 import com.volmit.react.util.TM;
@@ -35,7 +36,7 @@ public class SamplerTickUse extends RAveragedSampler implements IReactorTimer
 	@Override
 	public String format(double v)
 	{
-		return F.f(v, getAccuracy());
+		return F.time(v, getAccuracy());
 	}
 
 	@Override
@@ -57,5 +58,18 @@ public class SamplerTickUse extends RAveragedSampler implements IReactorTimer
 			waiting = false;
 			tm.set();
 		}
+	}
+
+	@Override
+	public String getTag()
+	{
+		C form = C.BOLD;
+
+		if(getValue() > 45)
+		{
+			form = C.UNDERLINE;
+		}
+
+		return C.GREEN + "" + form + get() + C.RESET + C.GREEN + "\u2126";
 	}
 }

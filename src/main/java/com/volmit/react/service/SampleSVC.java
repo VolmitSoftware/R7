@@ -94,7 +94,7 @@ public class SampleSVC extends RSVC
 	{
 		for(ISampler i : samplers.v())
 		{
-			if(TICK.v(i.getInterval()))
+			if(!i.isHibernating() && TICK.v(i.getInterval()))
 			{
 				try
 				{

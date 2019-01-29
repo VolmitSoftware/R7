@@ -54,8 +54,8 @@ public class SamplerMemoryUse extends RSampler implements IReactorTimer
 		else
 		{
 			actualGarbage = memUse - actualUsage;
-			allocateda += memUse - actualUsage;
-			allocatedb += memUse - actualUsage;
+			allocateda += memUse - lastMemoryUsed;
+			allocatedb += memUse - lastMemoryUsed;
 		}
 
 		lastMemoryUsed = memUse;

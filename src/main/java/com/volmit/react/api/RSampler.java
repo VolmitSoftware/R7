@@ -1,6 +1,7 @@
 package com.volmit.react.api;
 
 import com.volmit.react.React;
+import com.volmit.react.util.M;
 
 public abstract class RSampler implements ISampler
 {
@@ -11,10 +12,26 @@ public abstract class RSampler implements ISampler
 	private String description;
 	private int accuracy;
 	private int interval;
+	private boolean canHibernate;
+	private long lastAccess;
 
 	public RSampler(String id)
 	{
 		this.id = id;
+		canHibernate = true;
+		lastAccess = M.ms() - 10000000;
+	}
+
+	@Override
+	public boolean isHibernating()
+	{
+		return canHibernate && M.ms() - lastAccess > interval * 50;
+	}
+
+	@Override
+	public void setAllowHibernation(boolean b)
+	{
+		canHibernate = b;
 	}
 
 	@SuppressWarnings("unchecked")
@@ -101,6 +118,7 @@ public abstract class RSampler implements ISampler
 	@Override
 	public double getValue()
 	{
+		lastAccess = M.ms();
 		return value;
 	}
 

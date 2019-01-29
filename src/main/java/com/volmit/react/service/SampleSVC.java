@@ -66,6 +66,17 @@ public class SampleSVC extends RSVC
 		React.instance.register(i);
 	}
 
+	public void rereg()
+	{
+		for(ISampler i : samplers.v())
+		{
+			if(i instanceof IReactorTimer)
+			{
+				React.reactor.addReactorTimer((IReactorTimer) i);
+			}
+		}
+	}
+
 	@Override
 	public void onStart()
 	{

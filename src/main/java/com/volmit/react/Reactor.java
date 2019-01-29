@@ -39,7 +39,6 @@ public class Reactor extends Thread
 			try
 			{
 				time = timer.markReset();
-				timerActive.set();
 				Thread.sleep(1);
 
 				for(IReactorTimer i : timers)
@@ -69,6 +68,8 @@ public class Reactor extends Thread
 							e.printStackTrace();
 						}
 					}
+
+					timerActive.set();
 				}
 			}
 

@@ -32,7 +32,7 @@ public class React extends VolumePlugin
 	private GSet<IService> services;
 
 	@Command
-	private CReact cReact;
+	public CReact cReact;
 
 	@Start
 	public void onStart()
@@ -45,6 +45,7 @@ public class React extends VolumePlugin
 		Bukkit.getScheduler().scheduleSyncRepeatingTask(this, () -> tick(false), 0, 0);
 		registerServices();
 		startServices();
+		instance = (React) Bukkit.getPluginManager().getPlugin("React");
 	}
 
 	@Stop
@@ -160,6 +161,11 @@ public class React extends VolumePlugin
 		reactor = new Reactor();
 		reactor.start();
 		reactor.registerTicked(() -> tick(true));
+
+		if(sampleSVC != null)
+		{
+			sampleSVC.rereg();
+		}
 	}
 
 	private boolean isReactorRunning()

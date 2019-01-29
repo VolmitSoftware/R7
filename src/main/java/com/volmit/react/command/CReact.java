@@ -18,7 +18,6 @@ public class CReact extends ReactCommand
 	public boolean handle(VolumeSender s, String[] args)
 	{
 		Gate.msg(s, "Hello");
-		Gate.notifSuccess(s.player(), "Hello");
 
 		return true;
 	}

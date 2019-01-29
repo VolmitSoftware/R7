@@ -11,7 +11,7 @@ public class SamplerMemoryAllocatedPerSecond extends RAveragedSampler
 	public SamplerMemoryAllocatedPerSecond()
 	{
 		super("mahs", 5);
-		setInterval(Scales.scale(Config.REACT_MONITORING_QUALITY, 0, 15));
+		setInterval(Scales.scale(Config.REACT_MONITORING_QUALITY, 0, 8));
 	}
 
 	@Override
@@ -31,7 +31,7 @@ public class SamplerMemoryAllocatedPerSecond extends RAveragedSampler
 	{
 		C form = C.BOLD;
 
-		if(getValue() > 650)
+		if(getValue() > 650000000)
 		{
 			form = C.UNDERLINE;
 		}

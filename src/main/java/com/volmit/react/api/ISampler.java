@@ -11,6 +11,21 @@ import org.bukkit.event.Listener;
 public interface ISampler extends Listener
 {
 	/**
+	 * Check if this sampler is hibernating
+	 *
+	 * @return true if it hasnt been used for a long time
+	 */
+	public boolean isHibernating();
+
+	/**
+	 * Set this sampler to allow hibernating when not used
+	 *
+	 * @param b
+	 *            true if its hibernating
+	 */
+	public void setAllowHibernation(boolean b);
+
+	/**
 	 * Get the tick interval of this sampler
 	 *
 	 * @return the tick interval

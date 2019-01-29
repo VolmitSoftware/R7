@@ -20,6 +20,7 @@ import org.bukkit.event.player.PlayerQuitEvent;
 import org.bukkit.inventory.ItemStack;
 
 import com.volmit.react.React;
+import com.volmit.react.sched.J;
 
 import net.minecraft.server.v1_9_R1.Block;
 import net.minecraft.server.v1_9_R1.BlockPosition;
@@ -57,15 +58,7 @@ public class Catalyst92 extends CatalystPacketListener implements CatalystHost
 		a.withBackground("minecraft:textures/blocks/bedrock.png");
 		a.loadAdvancement();
 		a.sendPlayer(p);
-
-		Bukkit.getScheduler().scheduleSyncDelayedTask(React.instance, new Runnable()
-		{
-			@Override
-			public void run()
-			{
-				a.delete(p);
-			}
-		}, 1);
+		J.s(() -> a.delete(p), 5);
 	}
 
 	// START PACKETS

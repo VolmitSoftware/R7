@@ -16,13 +16,7 @@ public class MonitorSVC extends RSVC
 	@Override
 	public void onStart()
 	{
-		for(ReactPlayer i : React.playerSVC.getPlayers())
-		{
-			if(i.isMonitoring())
-			{
-				tickMonitor(i);
-			}
-		}
+
 	}
 
 	private void tickMonitor(ReactPlayer i)
@@ -36,12 +30,13 @@ public class MonitorSVC extends RSVC
 		boolean m = i.player().isSneaking();
 		SampleSVC s = React.sampleSVC;
 		//@builder
-		t += " " + (!m ? s.getSampler("tps") :
-			s.getSampler("tick-server") + " " + C.RESET + s.getSampler("tick-server-percent"));
-		t += " " + (!m ? s.getSampler("mem-use") + "" + C.RESET + C.DARK_GRAY + " (" + s.getSampler("mem-use-percent") + C.RESET + "" + C.DARK_GRAY + ")"  :
-			s.getSampler("maht"));
+		t += " " + (!m ? s.getSampler("tps").getTag() :
+			s.getSampler("tick-server").getTag() + " " + C.RESET + s.getSampler("tick-server-percent").getTag());
+		t += " " + (!m ? s.getSampler("mem-use").getTag() + "" + C.RESET + C.DARK_GRAY + " (" + s.getSampler("mem-use-percent").getTag() + C.RESET + "" + C.DARK_GRAY + ")"  :
+			s.getSampler("maht").getTag());
 		//@done
-		return t.substring(1).trim();
+
+		return t.substring(1);
 	}
 
 	@Override
@@ -53,6 +48,12 @@ public class MonitorSVC extends RSVC
 	@Override
 	public void onTick()
 	{
-
+		for(ReactPlayer i : React.playerSVC.getPlayers())
+		{
+			if(i.isMonitoring())
+			{
+				tickMonitor(i);
+			}
+		}
 	}
 }
